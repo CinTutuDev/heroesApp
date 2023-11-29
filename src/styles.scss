@@ -18,3 +18,28 @@ a:-webkit-any-link {
   flex: 1 1 auto;
 }
 
+.tarjeta {
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.circular {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatar-container {
+  width: 100px; // Ajusta según sea necesario
+  height: 100px; // Ajusta según sea necesario
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.contenedor {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
