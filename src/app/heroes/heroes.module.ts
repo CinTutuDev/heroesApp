@@ -7,9 +7,10 @@ import { MaterialModule } from '../material/material.module';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { HeroPageComponent } from './pages/hero-page/hero-page.component';
 import { CardComponent } from './components/card/card.component';
+import { HeroImagePipe } from './pipe/hero-image.pipe';
 
 @NgModule({
-  declarations: [LayoutPageComponent, ListPageComponent, HeroPageComponent, CardComponent],
+  declarations: [LayoutPageComponent, ListPageComponent, HeroPageComponent, CardComponent, HeroImagePipe],
   imports: [CommonModule, HeroesRoutingModule, MaterialModule],
 })
 export class HeroesModule {}
