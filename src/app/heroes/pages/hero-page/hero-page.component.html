@@ -6,56 +6,78 @@
   </mat-grid-list>
 </ng-template>
 
-<div *ngIf="hero; else divLoading" class="grid p-5">
-  <mat-card class="example-card col-12 sm:col-6" *ngIf="hero; else divLoading">
-    <mat-card-header>
-      <div mat-card-avatar class="avatar-container">
-        <img
-          mat-card-image
-          [src]="hero | heroImage"
-          [alt]="hero.superhero"
-          class="circular"
-        />
-      </div>
-      <mat-card-title>{{ hero.alter_ego }}</mat-card-title>
-      <mat-card-subtitle>{{ hero.superhero }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="hero | heroImage" [alt]="hero.superhero" />
-    <mat-card-content>
-      <p>Teléfono:{{ hero.publisher }}</p>
-      <p>Email:{{ hero.first_appearance }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-flat-button color="primary">Otra persona?</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card class="example-card col-12 sm:col-6">
-    <mat-card-header>
-      <div mat-card-avatar class="avatar-container">
-        <img
-          mat-card-image
-          [src]="hero | heroImage"
-          [alt]="hero.superhero"
-          class="circular"
-        />
-      </div>
-      <mat-card-title>Información</mat-card-title>
-      <mat-card-subtitle>{{ hero.superhero }}</mat-card-subtitle>
-    </mat-card-header>
-    <!--  <img mat-card-image [src]="hero | heroImage" [alt]="hero.superhero"> -->
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item>{{ hero.first_appearance }}</mat-list-item>
-        <mat-list-item>{{ hero.characters }}</mat-list-item>
-        <mat-list-item>{{ hero.publisher }}</mat-list-item>
-        <mat-list-item>{{ hero.alter_ego }}</mat-list-item>
-      </mat-list>
+<div *ngIf="hero; else divLoading" class="grid ml-4">
+  <div class="col">
+    <mat-card
+      class="cardOne col-12 sm:col-6 p-3 text-center"
+      id="cardOne"
+      *ngIf="hero; else divLoading"
+    >
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-container">
+          <img
+            mat-card-image
+            [src]="hero | heroImage"
+            [alt]="hero.superhero"
+            class="circular"
+          />
+        </div>
+        <mat-card-title>{{ hero.alter_ego }}</mat-card-title>
+        <mat-card-subtitle>{{ hero.superhero }}</mat-card-subtitle>
+        <mat-card-actions>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="goBack()"
+            class="ml-6"
+          >
+            regresar
+          </button>
+        </mat-card-actions>
+      </mat-card-header>
+      <img mat-card-image [src]="hero | heroImage" [alt]="hero.superhero" />
+      <mat-card-content>
+        <p>Teléfono:{{ hero.publisher }}</p>
+        <p>Email:{{ hero.first_appearance }}</p>
+      </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary" (click)="goBack()">
-          regresar
-        </button>
+        <button mat-flat-button color="primary">Otra persona?</button>
       </mat-card-actions>
-    </mat-card-content>
-  </mat-card>
+    </mat-card>
+  </div>
+  <div class="col">
+    <mat-card class="example-card col-12 sm:col-6 p-3" id="cardTwo">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-container">
+          <img
+            mat-card-image
+            [src]="hero | heroImage"
+            [alt]="hero.superhero"
+            class="circular"
+          />
+        </div>
+        <mat-card-title>Información</mat-card-title>
+        <mat-card-subtitle>{{ hero.superhero }}</mat-card-subtitle>
+      </mat-card-header>
+      <!--  <img mat-card-image [src]="hero | heroImage" [alt]="hero.superhero"> -->
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>{{ hero.first_appearance }}</mat-list-item>
+          <mat-list-item>{{ hero.characters }}</mat-list-item>
+          <mat-list-item>{{ hero.publisher }}</mat-list-item>
+          <mat-list-item>{{ hero.alter_ego }}</mat-list-item>
+        </mat-list>
+        <mat-card-actions>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="goBack()"
+            class="ml-4"
+          >
+            regresar
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

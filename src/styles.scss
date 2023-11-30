@@ -43,3 +43,18 @@ a:-webkit-any-link {
   justify-content: center;
   align-items: center;
 }
+
+#cardOne{
+  height: 100vh;
+  display: table-cell;
+  justify-content:left;
+  align-items:end;
+}
+#cardTwo{
+
+  display: table-cell;
+  position: relative;
+  padding: 16px;
+  border-radius: 4px;
+
+}
