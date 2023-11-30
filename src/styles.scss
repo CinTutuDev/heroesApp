@@ -14,7 +14,7 @@ a:-webkit-any-link {
   color: whitesmoke;
   text-decoration: none;
 }
-.spacer{
+.spacer {
   flex: 1 1 auto;
 }
 
@@ -44,17 +44,23 @@ a:-webkit-any-link {
   align-items: center;
 }
 
-#cardOne{
+#cardOne {
   height: 100vh;
   display: table-cell;
-  justify-content:left;
-  align-items:end;
+  justify-content: left;
+  align-items: end;
 }
-#cardTwo{
-
+#cardTwo {
   display: table-cell;
   position: relative;
   padding: 16px;
   border-radius: 4px;
-
 }
+
+/* .example-full-width input.mat-input-element {
+  padding: 1rem;
+  background: #18c37f;
+  color: black;
+  width: 98%;
+}
+ */

@@ -8,9 +8,11 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
 import { HeroPageComponent } from './pages/hero-page/hero-page.component';
 import { CardComponent } from './components/card/card.component';
 import { HeroImagePipe } from './pipe/hero-image.pipe';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [LayoutPageComponent, ListPageComponent, HeroPageComponent, CardComponent, HeroImagePipe],
-  imports: [CommonModule, HeroesRoutingModule, MaterialModule],
+  declarations: [LayoutPageComponent, ListPageComponent, HeroPageComponent, CardComponent, HeroImagePipe, SearchPageComponent],
+  imports: [CommonModule, HeroesRoutingModule, MaterialModule, ReactiveFormsModule],
 })
 export class HeroesModule {}
