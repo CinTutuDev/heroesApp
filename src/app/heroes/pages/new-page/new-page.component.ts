@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
-import { switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -74,18 +74,23 @@ export class NewPageComponent implements OnInit {
     });
   }
 
-  onDeleteHero(){
-    if(!this.currentHero.id) throw Error('Hero id is required')
+  onDeleteHero() {
+    if (!this.currentHero.id) throw Error('Hero id is required');
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: this.heroForm.value
+      data: this.heroForm.value,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-     if(!result) return
-    this.HeroesS.deleteteHero(this.currentHero.id)
-      this.router.navigate(['/heroes'])
-    /* this.animal = result; */
-    });
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((result: boolean) => result === true),
+        switchMap(() => this.HeroesS.deleteteHero(this.currentHero.id)),
+        filter((wasdeletr: boolean) => wasdeletr)
+        /*  tap((wasdeletr) => console.log({ wasdeletr })), */
+      )
+      .subscribe((result) => {
+        this.router.navigate(['/heroes']);
+      });
   }
 
   showSnackBar(msg: string): void {
