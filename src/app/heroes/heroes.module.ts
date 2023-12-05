@@ -13,7 +13,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NewPageComponent } from './pages/new-page/new-page.component';
 
 @NgModule({
-  declarations: [LayoutPageComponent, ListPageComponent, HeroPageComponent, CardComponent, HeroImagePipe, SearchPageComponent, NewPageComponent],
-  imports: [CommonModule, HeroesRoutingModule, MaterialModule, ReactiveFormsModule],
+  declarations: [
+    LayoutPageComponent,
+    ListPageComponent,
+    HeroPageComponent,
+    CardComponent,
+    HeroImagePipe,
+    SearchPageComponent,
+    NewPageComponent,
+  ],
+  imports: [
+    CommonModule,
+    HeroesRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
 })
 export class HeroesModule {}
