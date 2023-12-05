@@ -11,6 +11,7 @@ import { HeroImagePipe } from './pipe/hero-image.pipe';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewPageComponent } from './pages/new-page/new-page.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NewPageComponent } from './pages/new-page/new-page.component';
     HeroImagePipe,
     SearchPageComponent,
     NewPageComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
