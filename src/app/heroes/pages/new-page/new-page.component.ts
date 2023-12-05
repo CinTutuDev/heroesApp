@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Publisher } from '../../interfaces/hero.interface';
 
@@ -7,7 +7,7 @@ import { Publisher } from '../../interfaces/hero.interface';
   templateUrl: './new-page.component.html',
   styles: [],
 })
-export class NewPageComponent implements OnInit {
+export class NewPageComponent {
   public heroForm = new FormGroup({
     id: new FormControl<string>(''),
     superhero: new FormControl<string>('', { nonNullable: true }),
@@ -23,7 +23,10 @@ export class NewPageComponent implements OnInit {
     { id: 'Marvel Comics', desc: 'Marvel - Comics' },
   ];
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  onSubmit(): void {
+    console.log({
+      formIsValid: this.heroForm.valid,
+      value: this.heroForm.value,
+    });
+  }
 }
