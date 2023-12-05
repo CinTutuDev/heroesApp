@@ -34,6 +34,14 @@ export class NewPageComponent {
   onSubmit(): void {
     if (this.heroForm.invalid) return;
 
-    /* this.HeroesS.updateHero(this.heroForm.value) */
+    if (this.currentHero.id) {
+      this.HeroesS.updateHero(this.currentHero).subscribe((hero) => {
+        //TODO: mostrar snackbar
+      });
+      return;
+    }
+    this.HeroesS.addHero(this.currentHero).subscribe((hero) => {
+      //TODO: Mostrar snackbar, y navegar a /herpoes/edit / hero.id
+    });
   }
 }
