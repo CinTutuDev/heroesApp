@@ -1,4 +1,4 @@
 export const environment = {
-  URL: 'http://https://cvwebcintutudev.web.app/',
+  URL: 'https://cvwebcintutudev.web.app/',
   production: true
 };
