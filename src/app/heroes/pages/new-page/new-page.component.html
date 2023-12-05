@@ -8,7 +8,7 @@
   <div class="col-12 sm:col-6">
     <mat-card>
       <mat-card-content>
-        <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()" >
+        <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
           <mat-form-field class="col-12 sm:col-6">
             <mat-label>Súper héroes</mat-label>
             <input type="text" matInput required formControlName="superhero" />
@@ -77,10 +77,13 @@
   </div>
 
   <div class="col-12 sm:col-6">
-    <mat-card class="col-12">
-      <!-- <mat-label>Primera aparición</mat-label> -->
-      <img src="" alt="imagen del heroes" mat-card-image />
-      <!-- <input type="text" matInput required /> -->
+    <mat-card>
+      <img
+        [src]="currentHero | heroImage"
+        alt="imagen del heroes"
+        mat-card-image
+      />
     </mat-card>
   </div>
 </div>
+<!-- <pre>{{currentHero | json}}</pre> -->
