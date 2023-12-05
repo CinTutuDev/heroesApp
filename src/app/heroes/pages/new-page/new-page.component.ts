@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
+import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'heroes-new-page',
   templateUrl: './new-page.component.html',
   styles: [],
 })
-export class NewPageComponent {
+export class NewPageComponent implements OnInit {
+  durationInSeconds = 5;
+
   public heroForm = new FormGroup({
     id: new FormControl<string>(''),
     superhero: new FormControl<string>('', { nonNullable: true }),
@@ -24,11 +30,29 @@ export class NewPageComponent {
     { id: 'Marvel Comics', desc: 'Marvel - Comics' },
   ];
 
-  constructor(private HeroesS: HeroesService) {}
+  constructor(
+    private activatedR: ActivatedRoute,
+    private router: Router,
+    private HeroesS: HeroesService,
+    private snackBar: MatSnackBar
+  ) {}
 
   get currentHero(): Hero {
     const hero = this.heroForm.value as Hero;
     return hero;
+  }
+
+  ngOnInit(): void {
+    if (!this.router.url.includes('edit')) return;
+
+    this.activatedR.params
+      .pipe(switchMap(({ id }) => this.HeroesS.getHeroById(id)))
+      .subscribe((hero) => {
+        if (!hero) return this.router.navigateByUrl('/');
+
+        this.heroForm.reset(hero);
+        return;
+      });
   }
 
   onSubmit(): void {
@@ -36,12 +60,19 @@ export class NewPageComponent {
 
     if (this.currentHero.id) {
       this.HeroesS.updateHero(this.currentHero).subscribe((hero) => {
-        //TODO: mostrar snackbar
+        this.showSnackBar(`${hero.superhero} update!🔄`);
       });
       return;
     }
     this.HeroesS.addHero(this.currentHero).subscribe((hero) => {
-      //TODO: Mostrar snackbar, y navegar a /herpoes/edit / hero.id
+      this.router.navigate(['/heroes/edir/', hero.id]);
+      this.showSnackBar(`${hero.superhero} created!`);
+    });
+  }
+
+  showSnackBar(msg: string): void {
+    this.snackBar.open(msg, 'done', {
+      duration: this.durationInSeconds * 1000,
     });
   }
 }
