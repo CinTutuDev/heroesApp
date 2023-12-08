@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/auth/interfaces/user';
+import { AuthService } from 'src/app/auth/services/auth-service.service';
 
 @Component({
   selector: 'heroes-layout-page',
   templateUrl: './layout-page.component.html',
   styles: [],
 })
-export class LayoutPageComponent implements OnInit {
+export class LayoutPageComponent {
   public sidebarItems = [
     {
       label: 'Listado',
@@ -24,7 +27,14 @@ export class LayoutPageComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private authS: AuthService, private route: Router) {}
 
-  ngOnInit(): void {}
+  get user(): User | undefined {
+    return this.authS.currentUser;
+  }
+
+  onLogout(): void {
+    this.authS.logout();
+    this.route.navigate(['/auth/login']);
+  }
 }
